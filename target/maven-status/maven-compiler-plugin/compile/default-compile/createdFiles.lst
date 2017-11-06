@@ -1,0 +1,6 @@
+com/yuranov/phonebook/controller/PhonebookController.class
+com/yuranov/phonebook/service/IPhonebookDataSource.class
+com/yuranov/phonebook/models/PhoneRecord.class
+com/yuranov/phonebook/service/IPhonebookService.class
+com/yuranov/phonebook/service/PhonebookService.class
+com/yuranov/phonebook/dao/PhonebookDAO.class

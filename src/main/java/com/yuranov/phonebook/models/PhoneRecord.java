@@ -5,16 +5,27 @@
  */
 package com.yuranov.phonebook.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
  * @author mihail
  */
 @Entity
-public class PhoneRecord {
+@Table(name="PHONERECORD")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "PhoneRecord")
+
+public class PhoneRecord implements Serializable {
     @Id
     private Integer id;
     private String name;

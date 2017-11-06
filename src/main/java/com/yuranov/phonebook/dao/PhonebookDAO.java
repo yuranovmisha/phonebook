@@ -13,6 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
@@ -32,7 +33,7 @@ public class PhonebookDAO implements IPhonebookDataSource {
     }
     
     @Override
-    @Transactional(readOnly = true)
+    @Transactional
     public List<PhoneRecord> findByParams(PhoneRecord phoneRecord) {
         Query query = selectQuery(phoneRecord);
         return query.getResultList();
@@ -42,7 +43,7 @@ public class PhonebookDAO implements IPhonebookDataSource {
     @Override
     @Transactional
     public void deleteById(Integer id) {
-        Query query = entityManager.createQuery("delete from phonerecord p whre id=?1");
+        Query query = entityManager.createQuery("delete from phonerecord p where id=?1");
         query.setParameter(1, id);
         query.executeUpdate();
     }
@@ -63,10 +64,11 @@ public class PhonebookDAO implements IPhonebookDataSource {
     private Query selectQuery(PhoneRecord phoneRecord) {
         List parameters = new ArrayList();
         StringBuilder stringBuilder = 
-                new StringBuilder("select p from phonerecord p");
+                new StringBuilder("select p from PhoneRecord p ");
         boolean hasWhere = false;
         int parameterIndex = 1;
         if(checkField(phoneRecord.getName())) {
+            hasWhere = checkWhere(hasWhere, stringBuilder);
             stringBuilder.append("name=?" + String.valueOf(parameterIndex++));
             parameters.add(phoneRecord.getName());
             hasWhere = true;

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author mihail
  */
-@RestController
+@RestController()
 public class PhonebookController {
     @Autowired
     private IPhonebookService service;
@@ -38,9 +38,4 @@ public class PhonebookController {
     public void add(@RequestBody PhoneRecord phoneRecord) {
         service.addRecord(phoneRecord);
     }
-    
-    @GetMapping("/new")
-    public List req() {
-        return Arrays.asList("1", "2", "3");
-    }
-}
+ }
