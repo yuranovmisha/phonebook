@@ -13,7 +13,7 @@ import java.util.List;
  * @author mihail
  */
 public interface IPhonebookDataSource {
-    void persist(PhoneRecord phoneRecord);
+    PhoneRecord persist(PhoneRecord phoneRecord);
     List<PhoneRecord> findByParams(PhoneRecord phoneRecord);
     void deleteById(Integer id);
 }

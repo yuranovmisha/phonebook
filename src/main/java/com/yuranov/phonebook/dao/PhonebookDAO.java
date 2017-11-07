@@ -28,8 +28,9 @@ public class PhonebookDAO implements IPhonebookDataSource {
     
     @Override
     @Transactional
-    public void persist(PhoneRecord phoneRecord) {
+    public PhoneRecord persist(PhoneRecord phoneRecord) {
         entityManager.persist(phoneRecord);
+        return phoneRecord;
     }
     
     @Override
@@ -43,7 +44,7 @@ public class PhonebookDAO implements IPhonebookDataSource {
     @Override
     @Transactional
     public void deleteById(Integer id) {
-        Query query = entityManager.createQuery("delete from phonerecord p where id=?1");
+        Query query = entityManager.createQuery("delete from PhoneRecord p where id=?1");
         query.setParameter(1, id);
         query.executeUpdate();
     }

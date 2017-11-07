@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface IPhonebookService {
     List findByParams(PhoneRecord phoneRecord);
-    void addRecord(PhoneRecord phoneRecord);
+    PhoneRecord addRecord(PhoneRecord phoneRecord);
     void deleteRecord(Integer recordId);
 }

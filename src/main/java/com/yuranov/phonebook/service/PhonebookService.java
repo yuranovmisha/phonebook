@@ -22,8 +22,8 @@ public class PhonebookService implements IPhonebookService {
     @Autowired
     IPhonebookDataSource dataSource;
  
-    public void addRecord(PhoneRecord phoneRecord) {
-        dataSource.persist(phoneRecord);
+    public PhoneRecord addRecord(PhoneRecord phoneRecord) {
+        return dataSource.persist(phoneRecord);
     }
 
     public void deleteRecord(Integer recordId) {
